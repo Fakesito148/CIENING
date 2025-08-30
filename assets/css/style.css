@@ -1,0 +1,174 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
+
+header {
+  background-color: #c00;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  position: relative;
+}
+
+header img {
+  position: absolute;
+  right: 20px;
+  top: 5px;
+  height: 50px;
+}
+
+header .back {
+  position: absolute;
+  left: 15px;
+  top: 10px;
+  font-size: 26px;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.card {
+  border: 2px solid #c00;
+  border-radius: 8px;
+  width: 150px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #fff;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+}
+
+.card h3 {
+  margin: 5px 0;
+  color: #c00;
+}
+
+.card p {
+  margin: 0;
+  color: #666;
+  font-weight: bold;
+}
+
+.card-product {
+  background-color: #c00;
+  border-radius: 8px;
+  width: 160px;
+  padding: 15px;
+  color: white;
+  text-align: center;
+}
+
+.card-product img {
+  width: 70px;
+  height: 70px;
+}
+
+.card-product h3 {
+  margin: 10px 0;
+}
+
+.input-box {
+  background: white;
+  color: black;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-box input {
+  border: none;
+  outline: none;
+  width: 70%;
+}
+
+.estado {
+  font-size: 14px;
+  margin: 5px 0 10px;
+}
+
+.eliminar {
+  background: white;
+  color: #c00;
+  font-weight: bold;
+  border: none;
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.editar-btn{
+    background: white;
+  color: #c00;
+  font-weight: bold;
+  border: none;
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.editar-btn:hover{
+    background: #eee;
+}
+.eliminar:hover {
+  background: #eee;
+}
+.card-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra todo horizontalmente */
+  text-align: center;  /* centra texto */
+  padding: 15px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+
+.card-product .input-box input {
+  text-align: center;       /* centra el texto y placeholder dentro del input */
+  width: 60%;               /* ajusta el ancho del input */
+  padding: 5px 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  outline: none;
+}
+
+.card-product .edit-form input {
+  text-align: center;       /* mismo para el formulario inline */
+  width: 80%;
+  padding: 5px 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+}
+
+.card-product button {
+  margin: 5px 5px 0 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
