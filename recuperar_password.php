@@ -19,10 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST['usuario'] ?? '';
     $correo  = $_POST['correo'] ?? '';
 
-    $host = "localhost";
-    $user = "root";
-    $pass = "";
-    $db   = "abarrotes"; 
+   include("config/conexion.php");
 
     $conn = new mysqli($host, $user, $pass, $db);
     if ($conn->connect_error) {
