@@ -3,7 +3,7 @@ body {
   background-color: #f2f2f2;
   margin: 0;
   padding: 0;
-  display: flex; /* Para franja + contenido */
+  display: flex; 
 }
 
 .sidebar {
@@ -62,11 +62,13 @@ input, select {
 }
 
 .btn {
-  width: 100%;
+ width: 100%;
   padding: 10px;
   background: #b30000;
   color: #fff;
-  border:
+ 
 }
+ 
+
 
 
