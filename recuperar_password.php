@@ -57,9 +57,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <div class="sidebar"></div> 
-<div class="login-container">
+<div class="recuperar-container">
     <h1>Recuperar contraseña</h1>
-
+    
     <form action="recuperar_password.php" method="post">
         <label for="tipo">Tipo de usuario:</label>
         <select id="tipo" name="tipo" required>

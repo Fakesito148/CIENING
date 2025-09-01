@@ -41,9 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
          
             if ($tipo == "admins") {
-                echo "<script>alert('Sesión iniciada, bienvenido Administrador'); window.location='inicio_admin.php';</script>";
+                echo "<script>alert('¡Sesión iniciada como administrador, bienvenido!'); window.location='inicio_admin.php';</script>";
             } else {
-                echo "<script>alert('Sesión iniciada, bienvenido Empleado'); window.location='inicio_empleado.php';</script>";
+                echo "<script>alert('¡Sesión iniciada como empleado, bienvenido!'); window.location='inicio_empleado.php';</script>";
             }
             exit();
         } else {
@@ -63,9 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <div class="sidebar"></div> 
   <div class="login-container">
     <h1>Bienvenido</h1>
-
-   <!-- Cambiar logo mas adelante -->
-    <div class="logo">LOGO</div>
+  <img src="assets/images/logo_login.png" alt="Logo" class="logo-img">
 
     <h2>Iniciar sesión</h2>
 

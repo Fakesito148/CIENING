@@ -4,12 +4,24 @@ body {
   margin: 0;
   padding: 0;
   display: flex; 
+  height: 100%;   
+  margin: 0;     
 }
 
 .sidebar {
-  width: 120px;
+  width: 10%;                
   background-color: #b30000;
-  height: 100vh;
+  height: 100vh;          
+  position: fixed;        
+  top: 0;
+  left: 0;
+}
+
+.logo-img {
+  max-width: 200px;   
+  height: auto;      
+  margin: 10px auto;  
+  display: block;
 }
 
 .login-container {
@@ -21,7 +33,23 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   text-align: center;
+  position: relative; 
+  
 }
+
+.recuperar-container {
+  flex: 1;
+  margin: auto;
+  max-width: 450px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  text-align: center;
+  position: relative; 
+   margin-top: 80px;
+}
+
 
 h1 {
   color: #b30000;
@@ -62,13 +90,59 @@ input, select {
 }
 
 .btn {
- width: 100%;
+  width: 100%;
   padding: 10px;
   background: #b30000;
   color: #fff;
- 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease, box-shadow 0.3s ease;
 }
- 
+
+.btn:hover {
+  background-color: #d93030;
+  box-shadow: 0 0 8px rgba(255, 77, 77, 0.551), 0 0 15px rgba(255,26,26,0.5);
+  transform: translateY(-1px);
+}
+
+.forgot a {
+  color: #000000;            
+  text-decoration: none;  
+  margin-right: 5px; 
+  font-family: 'Arial', sans-serif; 
+  font-weight: bold;          
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.forgot a:hover {
+  color: #d93030;        
+  text-shadow: 0 0 5px #ff4d4da7; 
+}
+
+.link {
+  display: inline-flex; 
+  align-items: center;
+  text-decoration: none; 
+  color: #000000;  
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #d93030;   
+}
+
+.link .icon {
+  margin-right: 0.7px; /* espacio entre icono y texto */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+
+
+
+
 
 
 
