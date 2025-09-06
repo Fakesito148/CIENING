@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST['usuario'] ?? '';
     $correo  = $_POST['correo'] ?? '';
 
-   include("config/conexion.php");
+    include("config/conexion.php");
 
     $conn = new mysqli($host, $user, $pass, $db);
     if ($conn->connect_error) {
@@ -31,30 +31,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = mysqli_real_escape_string($conn, $usuario);
     $correo  = mysqli_real_escape_string($conn, $correo);
 
-    $sql = "SELECT * FROM $tabla WHERE usuario = '$usuario' AND correo = '$correo' LIMIT 1";
+  
+    $sql = "SELECT nombre, apellido, usuario, correo 
+            FROM $tabla 
+            WHERE usuario = '$usuario' AND correo = '$correo' 
+            LIMIT 1";
     $result = $conn->query($sql);
 
     if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $nombre   = $row['nombre'];
+        $apellido = $row['apellido'];
+        date_default_timezone_set('America/Mexico_City');
         $fecha = date("Y-m-d"); 
-   $sql_insert = "INSERT INTO tickets_recuperacion (tipo, usuario, correo, fecha) VALUES ('$tipo', '$usuario', '$correo', '$fecha')";
-
-
-
-
+        $estado = "PENDIENTE";
+        
+        $sql_insert = "INSERT INTO tickets_recuperacion 
+                        (nombre, apellido, tipo, usuario, correo, fecha, estado) 
+                        VALUES ('$nombre', '$apellido','$tipo', '$usuario', '$correo', '$fecha', '$estado')";
 
         if ($conn->query($sql_insert) === TRUE) {
-            echo "<script>alert('Solicitud de recuperación enviada. Un administrador estará en contacto contigo pronto por medio de tu correo.'); window.location='login.php';</script>";
+            echo "<script>
+                alert('Solicitud de recuperación enviada. Un administrador estará en contacto contigo pronto por medio de tu correo.');
+                window.location='login.php';
+            </script>";
         } else {
-            echo "<script>alert('Error al registrar la solicitud'); window.location='recuperar_password.php';</script>";
+            echo "<script>
+                alert('Error al registrar la solicitud: " . $conn->error . "');
+                window.location='recuperar_password.php';
+            </script>";
         }
 
     } else {
-        echo "<script>alert('Usuario o correo no encontrado'); window.location='recuperar_password.php';</script>";
+        echo "<script>
+            alert('Usuario o correo no encontrado');
+            window.location='recuperar_password.php';
+        </script>";
     }
 
     $conn->close();
 }
 ?>
+
 
 <div class="sidebar"></div> 
 <div class="recuperar-container">
