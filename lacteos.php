@@ -7,6 +7,7 @@ include "views/header.php";
 <link rel="stylesheet" href="assets/css/style.css">
 
 <div class="container">
+  
   <?php
   $sql = "SELECT * FROM lacteos";
   $result = $conn->query($sql);
@@ -38,4 +39,16 @@ include "views/header.php";
 
   <?php } ?>
 </div>
+
+<div class="form-agregar card-product">
+  <h2>Agregar nuevo producto</h2>
+  <form action="controllers/agregar.php" method="POST">
+    <input type="text" name="nombre" placeholder="Nombre del producto" required>
+    <input type="number" name="cantidad" placeholder="Cantidad" required>
+    <input type="text" name="estado" placeholder="Estado (Disponible/Agotado)" required>
+    <button type="submit" class="btn-agregar">AGREGAR</button>
+  </form>
+</div>
+
+
 <script src="assets/js/editar.js"></script>
