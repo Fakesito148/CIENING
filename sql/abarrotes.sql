@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-09-2025 a las 10:18:51
+-- Tiempo de generación: 09-11-2025 a las 05:33:45
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -29,6 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admins` (
   `id` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `apellido` varchar(255) NOT NULL,
   `usuario` varchar(255) NOT NULL,
   `contraseña` varchar(255) NOT NULL,
   `correo` varchar(255) NOT NULL
@@ -38,8 +40,9 @@ CREATE TABLE `admins` (
 -- Volcado de datos para la tabla `admins`
 --
 
-INSERT INTO `admins` (`id`, `usuario`, `contraseña`, `correo`) VALUES
-(1, 'PedroC0909', 'Fime255', 'pedro.cervantesmls@uanl.edu.mx');
+INSERT INTO `admins` (`id`, `nombre`, `apellido`, `usuario`, `contraseña`, `correo`) VALUES
+(1, 'Pedro de Jesús', 'Cervantes Morales', 'PedroC0909', 'Coco0120', 'pedro.cervantesmls@uanl.edu.mx'),
+(2, 'Carlos ', 'Martinez Mendoza', 'Carlos2888', 'Dreamfyre88', 'Carlos_mm01@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -71,6 +74,8 @@ INSERT INTO `dulces` (`id`, `nombre`, `cantidad`, `estado`) VALUES
 
 CREATE TABLE `empleados` (
   `id` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `apellido` varchar(255) NOT NULL,
   `usuario` varchar(255) NOT NULL,
   `contraseña` varchar(255) NOT NULL,
   `correo` varchar(255) NOT NULL
@@ -80,8 +85,9 @@ CREATE TABLE `empleados` (
 -- Volcado de datos para la tabla `empleados`
 --
 
-INSERT INTO `empleados` (`id`, `usuario`, `contraseña`, `correo`) VALUES
-(1, 'JuanG15', 'Coco3350', 'juan_gonzales15@gmail.com');
+INSERT INTO `empleados` (`id`, `nombre`, `apellido`, `usuario`, `contraseña`, `correo`) VALUES
+(1, 'Jorge', 'Hernández', 'Jorge0815', 'Night_city15', 'Jorge_hdz1998@gmail.com'),
+(2, 'Miguel Angel', 'Robles Hernán', 'Angel_RH2209', 'Black_cat0990', 'Miguel_RH09@outlook.com');
 
 -- --------------------------------------------------------
 
@@ -158,18 +164,22 @@ INSERT INTO `papitas` (`id`, `nombre`, `cantidad`, `estado`) VALUES
 
 CREATE TABLE `tickets_recuperacion` (
   `id` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `apellido` varchar(255) NOT NULL,
   `tipo` varchar(255) NOT NULL,
   `usuario` varchar(255) NOT NULL,
   `correo` varchar(255) NOT NULL,
-  `fecha` date NOT NULL
+  `fecha` date NOT NULL,
+  `estado` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tickets_recuperacion`
 --
 
-INSERT INTO `tickets_recuperacion` (`id`, `tipo`, `usuario`, `correo`, `fecha`) VALUES
-(1, 'admins', 'PedroC0909', 'pedro.cervantesmls@uanl.edu.mx', '2025-09-01');
+INSERT INTO `tickets_recuperacion` (`id`, `nombre`, `apellido`, `tipo`, `usuario`, `correo`, `fecha`, `estado`) VALUES
+(1, 'Pedro de Jesús', 'Cervantes Morales', 'admins', 'PedroC0909', 'pedro.cervantesmls@uanl.edu.mx', '2025-09-06', 'PENDIENTE'),
+(2, 'Nicolás', 'Hernández', 'empleados', 'Nico0815', 'nicolas_hdz1998@gmail.com', '2025-09-06', 'COMPLETADO');
 
 -- --------------------------------------------------------
 
@@ -250,10 +260,22 @@ ALTER TABLE `variados`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `dulces`
 --
 ALTER TABLE `dulces`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `empleados`
+--
+ALTER TABLE `empleados`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `galletas`
@@ -265,7 +287,7 @@ ALTER TABLE `galletas`
 -- AUTO_INCREMENT de la tabla `lacteos`
 --
 ALTER TABLE `lacteos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `papitas`
@@ -277,7 +299,7 @@ ALTER TABLE `papitas`
 -- AUTO_INCREMENT de la tabla `tickets_recuperacion`
 --
 ALTER TABLE `tickets_recuperacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `variados`

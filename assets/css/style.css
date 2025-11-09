@@ -137,8 +137,8 @@ header .back {
 .card-product {
   display: flex;
   flex-direction: column;
-  align-items: center; /* centra todo horizontalmente */
-  text-align: center;  /* centra texto */
+  align-items: center; 
+  text-align: center;  
   padding: 15px;
   margin: 10px;
   border: 1px solid #ccc;
@@ -147,8 +147,8 @@ header .back {
 }
 
 .card-product .input-box input {
-  text-align: center;       /* centra el texto y placeholder dentro del input */
-  width: 60%;               /* ajusta el ancho del input */
+  text-align: center;      
+  width: 60%;             
   padding: 5px 10px;
   margin-top: 5px;
   border-radius: 5px;
@@ -157,7 +157,7 @@ header .back {
 }
 
 .card-product .edit-form input {
-  text-align: center;       /* mismo para el formulario inline */
+  text-align: center;   
   width: 80%;
   padding: 5px 10px;
   margin: 5px 0;
@@ -181,7 +181,7 @@ header .back {
   padding: 20px;
   width: 200px;
   text-align: center;
-  margin: 20px auto; /* centra el form horizontalmente */
+  margin: 20px auto; 
   box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 }
 
@@ -214,5 +214,54 @@ header .back {
 .btn-agregar:hover {
   background-color: #eee;
 }
+
+.botones-admin {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.boton {
+  background-color: #ddd;
+  color: #c00;
+  font-weight: bold;
+  border: none;
+ padding: 18px 30px; 
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.boton:hover {
+  background-color: #c00;
+  color: white;
+  transform: translateY(-2px);
+}
+
+
+
+.editar-btn, .eliminar, .btn-volver {
+  background-color: #ccc;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 0 5px;
+  display: inline-block;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.editar-btn:hover, .eliminar:hover, .btn-volver:hover {
+  background-color: #c00;
+  color: white;
+}
+
+
 
 
