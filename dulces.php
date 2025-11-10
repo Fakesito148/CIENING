@@ -1,6 +1,6 @@
 <?php
 include "config/conexion.php";
-$title = "LACTEOS - ADMIN";
+$title = "DULCES - ADMIN";
 $backLink = "inicio_admin.php";
 include "views/header.php"; 
 ?>
@@ -9,7 +9,8 @@ include "views/header.php";
 <div class="container">
   
   <?php
-  $sql = "SELECT * FROM lacteos";
+  // Consulta a la tabla de dulces
+  $sql = "SELECT * FROM dulces";
   $result = $conn->query($sql);
 
   while ($row = $result->fetch_assoc()) { ?>
@@ -26,11 +27,12 @@ include "views/header.php";
       
       <button class="editar-btn" onclick="toggleEdit(<?php echo $row['id']; ?>)">EDITAR</button>
       
-      <form method="POST" action="controllers/eliminar.php" style="display:inline-block;">
-        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-        <input type="hidden" name="seccion" value="lacteos">
-        <button type="submit" class="eliminar">ELIMINAR</button>
-      </form>
+<form method="POST" action="controllers/eliminar.php" style="display:inline-block;">
+  <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+  <input type="hidden" name="seccion" value="dulces">
+  <button type="submit" class="eliminar">ELIMINAR</button>
+</form>
+
       
       <div class="edit-form" id="edit-form-<?php echo $row['id']; ?>" style="display:none; margin-top:10px;">
         <input type="text" name="nombre" value="<?php echo $row['nombre']; ?>" id="nombre-<?php echo $row['id']; ?>">
@@ -44,14 +46,15 @@ include "views/header.php";
 </div>
 
 <div class="form-agregar card-product">
-  <h2>Agregar nuevo producto</h2>
-  <form action="controllers/agregar.php" method="POST">
-    <input type="hidden" name="seccion" value="lacteos">
-    <input type="text" name="nombre" placeholder="Nombre del producto" required>
-    <input type="number" name="cantidad" placeholder="Cantidad" required>
-    <input type="text" name="estado" placeholder="Estado (Disponible/Agotado)" required>
-    <button type="submit" class="btn-agregar">AGREGAR</button>
-  </form>
+  <h2>Agregar nuevo dulce</h2>
+<form action="controllers/agregar.php" method="POST">
+  <input type="hidden" name="seccion" value="dulces">
+  <input type="text" name="nombre" placeholder="Nombre del dulce" required>
+  <input type="number" name="cantidad" placeholder="Cantidad" required>
+  <input type="text" name="estado" placeholder="Estado (Disponible/Agotado)" required>
+  <button type="submit" class="btn-agregar">AGREGAR</button>
+</form>
+
 </div>
 
 <script src="assets/js/editar.js"></script>

@@ -1,20 +1,29 @@
 <?php
 include "../config/conexion.php";
 
-$nombre   = $_POST['nombre'];
-$cantidad = $_POST['cantidad'];
-$estado   = $_POST['estado'];
+if (isset($_POST['nombre'], $_POST['cantidad'], $_POST['estado'], $_POST['seccion'])) {
+    $nombre = $_POST['nombre'];
+    $cantidad = intval($_POST['cantidad']);
+    $estado = $_POST['estado'];
+    $seccion = $_POST['seccion'];
 
-// Insertar solo nombre, cantidad y estado
-$sql = "INSERT INTO lacteos (nombre, cantidad, estado) 
-        VALUES ('$nombre', '$cantidad', '$estado')";
+    // Mapear sección a tabla
+    $tablas = [
+        'lacteos' => 'lacteos',
+        'dulces'  => 'dulces',
+        'galletas'=> 'galletas',
+        'papitas' => 'papitas',
+        'variados'=> 'variados'
+    ];
 
-if ($conn->query($sql) === TRUE) {
-    header("Location: ../lacteos.php");
-    exit;
-} else {
-    echo "Error: " . $conn->error;
+    if (array_key_exists($seccion, $tablas)) {
+        $tabla = $tablas[$seccion];
+        $sql = "INSERT INTO $tabla (nombre, cantidad, estado) VALUES ('$nombre', $cantidad, '$estado')";
+        $conn->query($sql);
+    }
 }
 
-$conn->close();
+// Redirigir a la página correspondiente
+header("Location: ../$seccion.php");
+exit;
 ?>

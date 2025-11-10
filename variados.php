@@ -1,15 +1,14 @@
 <?php
 include "config/conexion.php";
-$title = "LACTEOS - ADMIN";
+$title = "VARIADOS - ADMIN";
 $backLink = "inicio_admin.php";
 include "views/header.php"; 
 ?>
 <link rel="stylesheet" href="assets/css/style.css">
 
 <div class="container">
-  
   <?php
-  $sql = "SELECT * FROM lacteos";
+  $sql = "SELECT * FROM variados";
   $result = $conn->query($sql);
 
   while ($row = $result->fetch_assoc()) { ?>
@@ -28,7 +27,7 @@ include "views/header.php";
       
       <form method="POST" action="controllers/eliminar.php" style="display:inline-block;">
         <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-        <input type="hidden" name="seccion" value="lacteos">
+        <input type="hidden" name="seccion" value="variados">
         <button type="submit" class="eliminar">ELIMINAR</button>
       </form>
       
@@ -44,9 +43,9 @@ include "views/header.php";
 </div>
 
 <div class="form-agregar card-product">
-  <h2>Agregar nuevo producto</h2>
+  <h2>Agregar nuevo producto variado</h2>
   <form action="controllers/agregar.php" method="POST">
-    <input type="hidden" name="seccion" value="lacteos">
+    <input type="hidden" name="seccion" value="variados">
     <input type="text" name="nombre" placeholder="Nombre del producto" required>
     <input type="number" name="cantidad" placeholder="Cantidad" required>
     <input type="text" name="estado" placeholder="Estado (Disponible/Agotado)" required>

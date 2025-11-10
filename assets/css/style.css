@@ -223,12 +223,13 @@ header .back {
   margin-top: 20px;
 }
 
+
 .boton {
   background-color: #ddd;
   color: #c00;
   font-weight: bold;
   border: none;
- padding: 18px 30px; 
+  padding: 18px 30px; 
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
