@@ -6,26 +6,29 @@ function cancelarEdit(id) {
     document.getElementById('edit-form-' + id).style.display = 'none';
 }
 
-function guardarCambios(id) {
+function guardarCambios(id, seccion) {
     const nombre = document.getElementById('nombre-' + id).value;
     const cantidad = document.getElementById('cantidad-' + id).value;
     const estado = document.getElementById('estado-' + id).value;
 
-    // Usamos fetch para enviar los cambios al servidor sin recargar
     fetch('controllers/editar_ajax.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `id=${id}&nombre=${nombre}&cantidad=${cantidad}&estado=${estado}`
+        body: `id=${id}&nombre=${nombre}&cantidad=${cantidad}&estado=${estado}&seccion=${seccion}`
     })
     .then(response => response.text())
-    .then(data => {
-        // Actualizar la tarjeta
-        document.querySelector('#card-' + id + ' .nombre').innerText = nombre;
-        document.querySelector('#card-' + id + ' .cantidad').innerText = cantidad;
-        document.querySelector('#card-' + id + ' .estado-text').innerText = estado;
-        // Ocultar formulario
-        cancelarEdit(id);
-    })
+.then(data => {
+    data = data.trim(); // quitar espacios o saltos de línea
+    if(data !== "OK"){
+        alert("Error: " + data);
+        return;
+    }
+    // actualizar tarjeta en DOM
+    document.querySelector('#card-' + id + ' .nombre').innerText = nombre;
+    document.querySelector('#card-' + id + ' .cantidad').innerText = cantidad;
+    document.querySelector('#card-' + id + ' .estado-text').innerText = estado;
+    cancelarEdit(id);
+})
+
     .catch(err => console.log(err));
 }
-

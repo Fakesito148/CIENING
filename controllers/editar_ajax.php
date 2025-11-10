@@ -6,11 +6,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre = $_POST['nombre'];
     $cantidad = $_POST['cantidad'];
     $estado = $_POST['estado'];
+    $tabla = $_POST['seccion']; // tabla enviada desde JS
 
-    $sql = "UPDATE lacteos SET nombre=?, cantidad=?, estado=? WHERE id=?";
+    // Validar que sea una tabla permitida
+    $tablas_permitidas = ['lacteos','dulces','galletas','papitas','variados'];
+    if(!in_array($tabla, $tablas_permitidas)){
+        echo "ERROR: tabla no permitida";
+        exit;
+    }
+
+    $sql = "UPDATE $tabla SET nombre=?, cantidad=?, estado=? WHERE id=?";
     $stmt = $conn->prepare($sql);
+    if(!$stmt){
+        echo "ERROR: ".$conn->error;
+        exit;
+    }
     $stmt->bind_param("sisi", $nombre, $cantidad, $estado, $id);
     $stmt->execute();
 
     echo "OK";
 }
+?>

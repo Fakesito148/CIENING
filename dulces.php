@@ -38,7 +38,7 @@ include "views/header.php";
         <input type="text" name="nombre" value="<?php echo $row['nombre']; ?>" id="nombre-<?php echo $row['id']; ?>">
         <input type="number" name="cantidad" value="<?php echo $row['cantidad']; ?>" id="cantidad-<?php echo $row['id']; ?>">
         <input type="text" name="estado" value="<?php echo $row['estado']; ?>" id="estado-<?php echo $row['id']; ?>">
-        <button onclick="guardarCambios(<?php echo $row['id']; ?>)">GUARDAR</button>
+        <button onclick="guardarCambios(<?php echo $row['id']; ?>, 'dulces')">GUARDAR</button>
         <button onclick="cancelarEdit(<?php echo $row['id']; ?>)">CANCELAR</button>
       </div>
     </div>

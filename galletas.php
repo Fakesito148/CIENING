@@ -30,23 +30,23 @@ include "views/header.php";
         <input type="hidden" name="seccion" value="galletas">
         <button type="submit" class="eliminar">ELIMINAR</button>
       </form>
-      
+
       <div class="edit-form" id="edit-form-<?php echo $row['id']; ?>" style="display:none; margin-top:10px;">
         <input type="text" name="nombre" value="<?php echo $row['nombre']; ?>" id="nombre-<?php echo $row['id']; ?>">
         <input type="number" name="cantidad" value="<?php echo $row['cantidad']; ?>" id="cantidad-<?php echo $row['id']; ?>">
         <input type="text" name="estado" value="<?php echo $row['estado']; ?>" id="estado-<?php echo $row['id']; ?>">
-        <button onclick="guardarCambios(<?php echo $row['id']; ?>)">GUARDAR</button>
-        <button onclick="cancelarEdit(<?php echo $row['id']; ?>)">CANCELAR</button>
+        <button type="button" onclick="guardarCambios(<?php echo $row['id']; ?>,'galletas')">GUARDAR</button>
+        <button type="button" onclick="cancelarEdit(<?php echo $row['id']; ?>)">CANCELAR</button>
       </div>
     </div>
   <?php } ?>
 </div>
 
 <div class="form-agregar card-product">
-  <h2>Agregar nueva galleta</h2>
+  <h2>Agregar nuevo producto</h2>
   <form action="controllers/agregar.php" method="POST">
     <input type="hidden" name="seccion" value="galletas">
-    <input type="text" name="nombre" placeholder="Nombre de la galleta" required>
+    <input type="text" name="nombre" placeholder="Nombre del producto" required>
     <input type="number" name="cantidad" placeholder="Cantidad" required>
     <input type="text" name="estado" placeholder="Estado (Disponible/Agotado)" required>
     <button type="submit" class="btn-agregar">AGREGAR</button>
