@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit();
+}
+
+if ($_SESSION['rol'] !== 'empleado') {
+    header("Location: agregar_admin.php"); // o administrador.php si existe
+    exit();
+}
+?>
+  
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -125,3 +139,4 @@ $conn->close();
 
 </body>
 </html>
+
