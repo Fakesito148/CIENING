@@ -1,5 +1,19 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit();
+}
+
+if ($_SESSION['rol'] !== 'admin') {
+    header("Location: empleado.php");
+    exit();
+}
+?>
+    
+<?php
+session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -37,3 +51,4 @@ if (isset($_GET['id'])) {
 
 $conn->close();
 ?>
+
