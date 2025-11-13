@@ -6,13 +6,11 @@ if (!isset($_SESSION['usuario'])) {
     exit();
 }
 
-if ($_SESSION['rol'] !== 'admin') {
-    header("Location: empleado.php");
+if ($_SESSION['tipo'] !== 'admins') {
+    header("Location: inicio_empleado.php");
     exit();
 }
-?>
-    
-<?php 
+
 $title = "Editar Administradores";
 include "views/header.php"; 
 include("config/conexion.php");
@@ -54,7 +52,7 @@ $result = $conn->query($sql);
                         <td><?= htmlspecialchars($row['nombre']) ?></td>
                         <td><?= htmlspecialchars($row['apellido']) ?></td>
                         <td><?= htmlspecialchars($row['usuario']) ?></td>
-                                <td>•••••••••</td>
+                        <td>•••••••••</td>
                         <td><?= htmlspecialchars($row['correo']) ?></td>
                         <td>
                             <a href="editar_admin_form.php?id=<?= $row['id'] ?>" class="editar-btn">Editar</a>
@@ -64,14 +62,11 @@ $result = $conn->query($sql);
                 <?php endwhile; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="6">No hay administradores registrados</td>
+                    <td colspan="7">No hay administradores registrados</td>
                 </tr>
             <?php endif; ?>
         </tbody>
     </table>
-
-    
 </div>
 
 <?php $conn->close(); ?>
-

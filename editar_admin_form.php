@@ -1,30 +1,17 @@
 <?php
 session_start();
 
+// Verificar si el usuario está logueado
 if (!isset($_SESSION['usuario'])) {
     header("Location: login.php");
     exit();
 }
 
-if ($_SESSION['rol'] !== 'admin') {
-    header("Location: empleado.php");
+// Verificar si es administrador
+if ($_SESSION['tipo'] !== 'admins') {
+    header("Location: inicio_empleado.php");
     exit();
 }
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editar Administrador</title>
-  <link rel="stylesheet" href="assets/css/style_login.css">
-</head>
-<body>
-
-<?php
-session_start();
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 
 include("config/conexion.php");
 $conn = new mysqli($host, $user, $pass, $db);
@@ -62,19 +49,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contraseña = $_POST['contraseña'] ?? '';
     $confirmar  = $_POST['confirmar_contraseña'] ?? '';
 
-  
     if (!empty($contraseña) && $contraseña !== $confirmar) {
         echo "<script>
                 alert('Las contraseñas no coinciden');
               </script>";
     } else {
-      
         if (empty($contraseña)) {
             $sql_update = "UPDATE admins 
                            SET nombre='$nombre', apellido='$apellido', usuario='$usuario', correo='$correo' 
                            WHERE id='$id'";
         } else {
-           
             $sql_update = "UPDATE admins 
                            SET nombre='$nombre', apellido='$apellido', usuario='$usuario', contraseña='$contraseña', correo='$correo' 
                            WHERE id='$id'";
@@ -94,6 +78,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 $conn->close();
 ?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Administrador</title>
+  <link rel="stylesheet" href="assets/css/style_login.css">
+</head>
+<body>
 
 <div class="sidebar"></div>
 <div class="recuperar-container">
@@ -125,11 +119,6 @@ $conn->close();
     <div class="forgot">
         <div class="back-login">
             <a href="inicio_admin.php" class="link">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12l14 0" />
-                    <path d="M5 12l4 4" />
-                    <path d="M5 12l4 -4" />
-                </svg>
                 Volver al menú principal
             </a>
         </div>
@@ -138,4 +127,3 @@ $conn->close();
 
 </body>
 </html>
-

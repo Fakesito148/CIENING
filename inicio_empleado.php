@@ -32,4 +32,8 @@ include "views/header.php";
     <h3>Variados</h3>
     <p>VER / VENDER</p>
   </div>
+  <div class="card" onclick="window.location.href='registro_ventas.php'">
+    <h3>Registro de Ventas</h3>
+    <p>VER HISTORIAL</p>
+  </div>
 </div>

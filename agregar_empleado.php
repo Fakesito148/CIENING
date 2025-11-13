@@ -6,53 +6,22 @@ if (!isset($_SESSION['usuario'])) {
     exit();
 }
 
-if ($_SESSION['rol'] !== 'admin') {
-    header("Location: empleado.php");
+if ($_SESSION['tipo'] !== 'admins') {
+    header("Location: inicio_empleado.php");
     exit();
 }
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agregar Empleado</title>
-  <link rel="stylesheet" href="assets/css/style_login.css">
-  <script>
-    // Validar que ambas contraseñas coincidan
-    function validarContraseña() {
-      const pass1 = document.getElementById("contraseña").value;
-      const pass2 = document.getElementById("confirmar_contraseña").value;
 
-      if (pass1 !== pass2) {
-        alert("Las contraseñas no coinciden. Intenta nuevamente.");
-        return false;
-      }
-      return true;
-    }
-  </script>
-</head>
-<body>
-
-<?php
-session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+include("config/conexion.php");
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    $nombre    = $_POST['nombre'] ?? '';
-    $apellido  = $_POST['apellido'] ?? '';
-    $usuario   = $_POST['usuario'] ?? '';
+    $nombre     = $_POST['nombre'] ?? '';
+    $apellido   = $_POST['apellido'] ?? '';
+    $usuario    = $_POST['usuario'] ?? '';
     $contraseña = $_POST['contraseña'] ?? '';
-    $correo    = $_POST['correo'] ?? '';
-
-    include("config/conexion.php");
-
-    $conn = new mysqli($host, $user, $pass, $db);
-    if ($conn->connect_error) {
-        die("Error en la conexión: " . $conn->connect_error);
-    }
+    $correo     = $_POST['correo'] ?? '';
 
     $sql = "INSERT INTO empleados (nombre, apellido, usuario, contraseña, correo)
             VALUES ('$nombre', '$apellido', '$usuario', '$contraseña', '$correo')";
@@ -65,19 +34,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "<script>
                 alert('Error al agregar el empleado: " . $conn->error . "');
-                window.location='Agregar_empleado.php';
+                window.location='agregar_empleado.php';
               </script>";
     }
-
-    $conn->close();
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Empleado</title>
+    <link rel="stylesheet" href="assets/css/style_login.css">
+    <script>
+        function validar_contraseña() {
+            const pass1 = document.getElementById("contraseña").value;
+            const pass2 = document.getElementById("confirmar_contraseña").value;
+
+            if (pass1 !== pass2) {
+                alert("Las contraseñas no coinciden. Intenta nuevamente.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
 
 <div class="sidebar"></div> 
 <div class="recuperar-container">
     <h1>Agregar Empleado</h1><br>
     
-    <form action="Agregar_empleado.php" method="post" onsubmit="return validarContraseña()">
+    <form action="agregar_empleado.php" method="post" onsubmit="return validar_contraseña()">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
 
@@ -116,4 +105,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 </html>
-
