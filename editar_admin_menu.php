@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit();
+}
+
+if ($_SESSION['rol'] !== 'admin') {
+    header("Location: empleado.php");
+    exit();
+}
+?>
+    
 <?php 
 $title = "Editar Administradores";
 include "views/header.php"; 
@@ -60,3 +74,4 @@ $result = $conn->query($sql);
 </div>
 
 <?php $conn->close(); ?>
+
