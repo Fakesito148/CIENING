@@ -263,6 +263,105 @@ header .back {
   color: white;
 }
 
+/* Contenedor de empleado */
+.container-empleado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+}
+
+/* Card de tabla de inventario */
+.card-product-empleado {
+  width: 90%;
+  max-width: 700px;
+  background: #fff;
+  color: #000;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+/* Título de tabla */
+.card-product-empleado h2 {
+  color: #c00;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Tabla de inventario */
+.tabla-empleado {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-empleado th {
+  background-color: #c00;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.tabla-empleado td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.tabla-empleado tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Formulario de venta */
+.form-venta {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+/* Input cantidad */
+.input-cantidad {
+  width: 60px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  text-align: center;
+}
+
+/* Botón registrar */
+.btn-registrar {
+  background-color: #c00;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-registrar:hover {
+  background-color: #a00;
+}
+
+/* Botón volver */
+.btn-volver {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ccc;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-volver:hover {
+  background-color: #c00;
+  color: white;
+}
 
 
 
